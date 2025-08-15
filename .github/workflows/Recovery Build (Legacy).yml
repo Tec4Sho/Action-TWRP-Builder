@@ -18,7 +18,7 @@ on:
       DEVICE_TREE_BRANCH:
         description: 'DEVICE_TREE_BRANCH'
         required: true
-        default: 'master'
+        default: 'android-9.0'
       DEVICE_PATH:
         description: 'DEVICE_PATH'
         required: true
@@ -45,7 +45,7 @@ on:
 jobs:
   build:
     if: github.event.repository.owner.id == github.event.sender.id
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-18.04
     permissions:
       contents: write
     steps:
@@ -111,7 +111,6 @@ jobs:
         echo "workspace-folder=$(pwd)" >> $GITHUB_OUTPUT
         git config --global user.name "Tec4Sho"
         git config --global user.email "143420949+Tec4Sho@users.noreply.github.com"
-        # git config --global url.https://${{ secrets.ALPS }}@github.com/.insteadOf https://github.com/
         repo init --depth=1 -u ${{ github.event.inputs.MANIFEST_URL }} -b ${{ github.event.inputs.MANIFEST_BRANCH }}
       id: pwd
 
