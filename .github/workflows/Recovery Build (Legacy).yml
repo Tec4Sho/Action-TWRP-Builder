@@ -14,7 +14,7 @@ on:
       DEVICE_TREE_URL:
         description: 'DEVICE_TREE_URL'
         required: true
-        default: 'https://github.com/Tec4Sho/device_alps_tb8163p3.git'
+        default: 'https://github.com/Tec4Sho/aandroid_device_alps_tb8163p3.git'
       DEVICE_TREE_BRANCH:
         description: 'DEVICE_TREE_BRANCH'
         required: true
