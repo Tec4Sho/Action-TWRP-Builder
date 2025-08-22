@@ -14,7 +14,7 @@ on:
       DEVICE_TREE_URL:
         description: 'DEVICE_TREE_URL'
         required: true
-        default: 'https://github.com/Tec4Sho/device_alps_tb8163p3_bsp'
+        default: 'https://github.com/Tec4Sho/device_alps_tb8163p3'
       DEVICE_TREE_BRANCH:
         description: 'DEVICE_TREE_BRANCH'
         required: true
@@ -22,7 +22,7 @@ on:
       DEVICE_PATH:
         description: 'DEVICE_PATH'
         required: true
-        default: 'device/alps/tb8163p3_bsp'
+        default: 'device/alps/tb8163p3'
       COMMON_TREE_URL:
         description: 'COMMON_TREE_URL (if no common tree, leave blank)'
         required: false
@@ -32,11 +32,11 @@ on:
       DEVICE_NAME:
         description: 'DEVICE_NAME'
         required: true
-        default: 'tb8163p3_bsp'
+        default: 'tb8163p3'
       MAKEFILE_NAME:
         description: 'MAKEFILE_NAME'
         required: true
-        default: 'omni_tb8163p3_bsp'
+        default: 'omni_tb8163p3'
       BUILD_TARGET:
         description: 'BUILD_TARGET'
         required: true
@@ -122,6 +122,7 @@ jobs:
 
     - name: Clone device tree
       run: |
+        mkdir -p ${{ github.event.inputs.DEVICE_PATH }}
         git clone ${{ github.event.inputs.DEVICE_TREE_URL }} -b ${{ github.event.inputs.DEVICE_TREE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
 
@@ -143,7 +144,7 @@ jobs:
     - name: Set Swap Space
       uses: pierotofy/set-swap-space@master
       with:
-        swap-size-gb: 12
+        swap-size-gb: 10
 
     - name: Switch to Python2
       run: |
